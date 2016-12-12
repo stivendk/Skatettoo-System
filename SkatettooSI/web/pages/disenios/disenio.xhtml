@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>#{disenioManagedBean.disenio.nombreDisenio} | Skatettoo</title>
+        <link rel="stylesheet" type="text/css" href="../../css/bootstrap.css"></link>
+        <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css"></link>
+        <link rel="stylesheet" type="text/css" href="../../css/estilos.css"></link>
+        <link rel="stylesheet" type="text/css" href="../../css/parallax.css"></link>
+        <script src="../../js/jquery-2.2.3.min.js"></script>
+    </h:head>
+    <h:body>
+        <nav class="navbar navbar-default">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Menu</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">
+                        <img class="logo" src="../../img/ST Logotype.png"></img>
+                    </a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a href="getting-started.php">Solicitar cita</a></li>
+                        <li><a class="active" href="#">Diseños</a></li>
+                        <li><a href="sucursales.xhtml">Sucursales</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#">Configuración</a></li>
+                        <li><a href="#">Cerrar Sesión</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <p:commandLink value="Regresar" action="/pages/disenios/disenios"/>
+        <f:view >
+            <center><h:form class="capa">
+                <h1><h:outputText value="#{disenioManagedBean.disenio.nombreDisenio}"/></h1>
+                <p:panelGrid columns="2">
+                    <p:outputLabel value="NombreDisenio:" for="nombreDisenio" />
+                    <p:outputLabel id="nombreDisenio" value="#{disenioManagedBean.disenio.nombreDisenio}" title="NombreDisenio"/>
+                    <p:outputLabel value="SesionesRecomendadas:" for="sesionesRecomendadas" />
+                    <p:outputLabel id="sesionesRecomendadas" value="#{disenioManagedBean.disenio.sesionesRecomendadas}" title="SesionesRecomendadas" />
+                    <p:outputLabel value="PrecioDisenio:" for="precioDisenio" />
+                    <p:outputLabel id="precioDisenio" value="#{disenioManagedBean.disenio.precioDisenio}" title="PrecioDisenio" />
+                    <p:outputLabel value="Anotaciones:" for="anotaciones" />
+                    <p:outputLabel id="anotaciones" value="#{disenioManagedBean.disenio.anotaciones}" title="Anotaciones"/>
+                    <p:outputLabel value="IdEstiloDisenio:" for="idEstiloDisenio" />
+                    <p:outputLabel id="idEstiloDisenio" value="#{disenioManagedBean.disenio.idEstiloDisenio.nombreEstilo}" />
+                    <p:outputLabel value="Tatuador:" for="idUsuario" />
+                    <p:outputLabel id="idUsuario" value="#{disenioManagedBean.disenio.idUsuario.nombre} #{disenioManagedBean.disenio.idUsuario.apellido}" />
+                </p:panelGrid>
+            </h:form></center>
+        </f:view>
+    </h:body>
+</html>
+
