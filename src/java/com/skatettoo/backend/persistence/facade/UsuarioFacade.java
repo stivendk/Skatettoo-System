@@ -31,7 +31,7 @@ public class UsuarioFacade extends AbstractFacade<Usuario> implements UsuarioFac
 
     @Override
     public Usuario iniciarSesion() {
-        
+        asdas
     }
     
 }
