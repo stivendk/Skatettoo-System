@@ -1,0 +1,82 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="es"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <meta charset="utf-8"></meta>
+        <title>Skatettoo | Inicio</title>
+        <link rel="stylesheet" type="text/css" href="../../css/bootstrap.css"></link>
+        <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css"></link>
+        <link rel="stylesheet" type="text/css" href="css/estilos.css"></link>
+        <link rel="stylesheet" type="text/css" href="css/parallax.css"></link>
+        <script src="../../js/jquery-2.2.3.min.js"></script>
+    </h:head>
+    <h:body>
+        <nav class="navbar navbar-default">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Menu</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">
+                        <img class="logo" src="../../img/ST Logotype.png"></img>
+                    </a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a href="getting-started.php">Solicitar cita</a></li>
+                        <li><a href="getting-started.php">Diseños</a></li>
+                        <li><a href="../disenios/sucursales.xhtml">Sucursales</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#">Configuración</a></li>
+                        <li><a href="#">Cerrar Sesión</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="bgimg-2">
+            <div class="caption">
+            </div>
+        </div>
+
+        <div style="position:relative;">
+            <div class="seccion">
+                <f:view>
+                    <h:form>
+                        <h1><h:outputText value="List"/></h1>
+                        <p:dataTable value="#{noticiaManagedBean.listarNoticia()}" var="item">
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Titulo"/>
+                                </f:facet>
+                                <h:outputText value="#{item.titulo}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Descripcion"/>
+                                </f:facet>
+                                <h:outputText value="#{item.descripcion}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="IdUsuario"/>
+                                </f:facet>
+                                <h:outputText value="#{item.idUsuario}"/>
+                            </p:column>
+                        </p:dataTable>
+                    </h:form>
+                </f:view>
+            </div>
+        </div>
+    </h:body>
+</html>
+
