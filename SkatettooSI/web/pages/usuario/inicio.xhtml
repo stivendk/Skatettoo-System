@@ -14,6 +14,7 @@
         <link rel="stylesheet" type="text/css" href="css/estilos.css"></link>
         <link rel="stylesheet" type="text/css" href="css/parallax.css"></link>
         <script src="../../js/jquery-2.2.3.min.js"></script>
+
     </h:head>
     <h:body>
         <nav class="navbar navbar-default">
@@ -31,13 +32,13 @@
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li><a href="getting-started.php">Solicitar cita</a></li>
-                        <li><a href="getting-started.php">Diseños</a></li>
+                        <li><a href="../disenios/cita.xhtml">Solicitar cita</a></li>
+                        <li><a href="../disenios/disenios.xhtml">Diseños</a></li>
                         <li><a href="../disenios/sucursales.xhtml">Sucursales</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#">Configuración</a></li>
-                        <li><a href="#">Cerrar Sesión</a></li>
+                        <li><a href="../../index.xhtml" onclick="#{loginManagedBean.cerrarSesion()}">Cerrar Sesión</a></li>
+                        <li><a href="config.xhtml" onclick="#{usuarioManagedBean.actualizarUsuario(us)}">Modificar</a></li>
                     </ul>
                 </div>
             </div>
@@ -50,31 +51,22 @@
 
         <div style="position:relative;">
             <div class="seccion">
-                <f:view>
-                    <h:form>
-                        <h1><h:outputText value="List"/></h1>
-                        <p:dataTable value="#{noticiaManagedBean.listarNoticia()}" var="item">
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Titulo"/>
-                                </f:facet>
-                                <h:outputText value="#{item.titulo}"/>
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Descripcion"/>
-                                </f:facet>
-                                <h:outputText value="#{item.descripcion}"/>
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="IdUsuario"/>
-                                </f:facet>
-                                <h:outputText value="#{item.idUsuario}"/>
-                            </p:column>
-                        </p:dataTable>
-                    </h:form>
-                </f:view>
+                <ui:repeat value="#{noticiaManagedBean.listarNoticia()}" var="item">
+                    <div class="panel-body" id="cuidados">
+                        <center><h1 class="parrafo">#{item.titulo}</h1></center>
+                        <figure class="pull-left ">
+                            <figcaption class="text-center"><strong></strong></figcaption>
+                        </figure>
+                        <hr> 
+                            <p class="parrafo">&nbsp;&nbsp;#{item.descripcion}</p>
+                            &nbsp;&nbsp;
+                        </hr>
+                    </div>
+                    <div class="bgimg-2">
+                        <div class="caption">
+                        </div>
+                    </div>
+                </ui:repeat>
             </div>
         </div>
     </h:body>

@@ -53,7 +53,7 @@ public class DisenioManagedBean implements Serializable, Managedbean<Disenio> {
 
     public String actualizarDisenio(Disenio dc) {
         disenio = dc;
-        return "";
+        return "/pages/usuario/tatuador/cdisenio_1";
     }
 
     public String verDisenio(Disenio dc) {
@@ -63,7 +63,7 @@ public class DisenioManagedBean implements Serializable, Managedbean<Disenio> {
     
     public String enviarCita(Disenio dc) {
         disenio = dc;
-        return "/pages/disenios/solicitard";
+        return "/pages/disenios/cita?faces-redirect=true";
     }
 
     public void modificarDisenio() {

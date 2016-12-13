@@ -5,6 +5,7 @@
  */
 package com.skatettoo.frontend.usuario.controller;
 
+
 import com.skatettoo.backend.persistence.entities.Usuario;
 import com.skatettoo.backend.persistence.facade.UsuarioFacadeLocal;
 import com.skatettoo.frontend.util.Managedbean;
@@ -58,7 +59,7 @@ public class UsuarioManagedBean implements Serializable, Managedbean <Usuario> {
 
     public String actualizarUsuario(Usuario us) {
         usuario = us;
-        return "";
+        return "/pages/usuario/config1";
     }
 
     public List<Usuario> listarUsuario() {

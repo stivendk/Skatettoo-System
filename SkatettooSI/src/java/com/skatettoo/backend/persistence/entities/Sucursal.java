@@ -8,6 +8,7 @@ package com.skatettoo.backend.persistence.entities;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -21,6 +22,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -40,7 +42,13 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Sucursal.findByNombre", query = "SELECT s FROM Sucursal s WHERE s.nombre = :nombre"),
     @NamedQuery(name = "Sucursal.findByDireccion", query = "SELECT s FROM Sucursal s WHERE s.direccion = :direccion"),
     @NamedQuery(name = "Sucursal.findByTelefono", query = "SELECT s FROM Sucursal s WHERE s.telefono = :telefono")})
-public class Sucursal implements Serializable {
+public class Sucursal implements Serializable, IEntitie {
+
+    @Lob
+    @Column(name = "fotoSuc")
+    private byte[] fotoSuc;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idSucursal", fetch = FetchType.LAZY)
+    private List<Cita> citaList;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -48,9 +56,6 @@ public class Sucursal implements Serializable {
     @Basic(optional = false)
     @Column(name = "id_sucursal")
     private Integer idSucursal;
-    @Lob
-    @Column(name = "fotoSuc")
-    private byte[] fotoSuc;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 30)
@@ -103,13 +108,6 @@ public class Sucursal implements Serializable {
         this.idSucursal = idSucursal;
     }
 
-    public byte[] getFotoSuc() {
-        return fotoSuc;
-    }
-
-    public void setFotoSuc(byte[] fotoSuc) {
-        this.fotoSuc = fotoSuc;
-    }
 
     public String getNombre() {
         return nombre;
@@ -183,6 +181,30 @@ public class Sucursal implements Serializable {
     @Override
     public String toString() {
         return "com.skatettoo.backend.persistence.entities.Sucursal[ idSucursal=" + idSucursal + " ]";
+    }
+
+
+    @XmlTransient
+    public List<Cita> getCitaList() {
+        return citaList;
+    }
+
+    public void setCitaList(List<Cita> citaList) {
+        this.citaList = citaList;
+    }
+
+
+    @Override
+    public String getId() {
+        return idSucursal.toString();
+    }
+
+    public byte[] getFotoSuc() {
+        return fotoSuc;
+    }
+
+    public void setFotoSuc(byte[] fotoSuc) {
+        this.fotoSuc = fotoSuc;
     }
     
 }

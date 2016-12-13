@@ -50,6 +50,8 @@ public class Usuario implements Serializable, IEntitie {
     @Column(name = "fotoPerfil")
     private byte[] fotoPerfil;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuario", fetch = FetchType.LAZY)
+    private List<Cita> citaList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuario", fetch = FetchType.LAZY)
     private List<Noticia> noticiaList;
 
     private static final long serialVersionUID = 1L;
@@ -92,8 +94,6 @@ public class Usuario implements Serializable, IEntitie {
     private List<Sucursal> sucursalList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuario", fetch = FetchType.LAZY)
     private List<Disenio> disenioList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuario", fetch = FetchType.LAZY)
-    private List<Cita> citaList;
     @JoinColumn(name = "id_rol", referencedColumnName = "id_rol")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Rol idRol;
@@ -193,15 +193,6 @@ public class Usuario implements Serializable, IEntitie {
         this.disenioList = disenioList;
     }
 
-    @XmlTransient
-    public List<Cita> getCitaList() {
-        return citaList;
-    }
-
-    public void setCitaList(List<Cita> citaList) {
-        this.citaList = citaList;
-    }
-
     public Rol getIdRol() {
         return idRol;
     }
@@ -264,6 +255,15 @@ public class Usuario implements Serializable, IEntitie {
 
     public void setFotoPerfil(byte[] fotoPerfil) {
         this.fotoPerfil = fotoPerfil;
+    }
+
+    @XmlTransient
+    public List<Cita> getCitaList() {
+        return citaList;
+    }
+
+    public void setCitaList(List<Cita> citaList) {
+        this.citaList = citaList;
     }
     
 }

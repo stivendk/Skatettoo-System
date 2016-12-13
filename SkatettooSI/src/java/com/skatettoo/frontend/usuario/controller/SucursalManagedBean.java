@@ -7,6 +7,7 @@ package com.skatettoo.frontend.usuario.controller;
 
 import com.skatettoo.backend.persistence.entities.Sucursal;
 import com.skatettoo.backend.persistence.facade.SucursalFacadeLocal;
+import com.skatettoo.frontend.util.Managedbean;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
@@ -20,7 +21,7 @@ import javax.ejb.EJB;
  */
 @Named(value = "sucursalManagedBean")
 @SessionScoped
-public class SucursalManagedBean implements Serializable {
+public class SucursalManagedBean implements Serializable, Managedbean <Sucursal> {
 
     private Sucursal sucu;
     @EJB
@@ -56,7 +57,7 @@ public class SucursalManagedBean implements Serializable {
 
     public String actualizarSucursal(Sucursal s) {
         sucu = s;
-        return "";
+        return "/pages/usuario/tatuador/csucursal_1";
     }
 
     public String verSucursal(Sucursal s) {
@@ -66,5 +67,10 @@ public class SucursalManagedBean implements Serializable {
 
     public List<Sucursal> listarSucursal() {
         return sucufc.findAll();
+    }
+
+    @Override
+    public Sucursal getObject(Integer i) {
+        return sucufc.find(i);
     }
 }

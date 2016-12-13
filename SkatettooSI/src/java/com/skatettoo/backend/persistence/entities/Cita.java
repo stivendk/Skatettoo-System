@@ -40,6 +40,20 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Cita.findByFechaHora", query = "SELECT c FROM Cita c WHERE c.fechaHora = :fechaHora")})
 public class Cita implements Serializable {
 
+    @Lob
+    @Column(name = "disenioAdjunto")
+    private byte[] disenioAdjunto;
+    @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario")
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    private Usuario idUsuario;
+
+    
+    @Column(name = "valor_tatuaje")
+    private Integer valorTatuaje;
+    @JoinColumn(name = "id_sucursal", referencedColumnName = "id_sucursal")
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    private Sucursal idSucursal;
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -52,22 +66,14 @@ public class Cita implements Serializable {
     @Size(min = 1, max = 65535)
     @Column(name = "descripcion")
     private String descripcion;
-    @Column(name = "valor-tatuaje")
-    private Integer valorTatuaje;
     @Basic(optional = false)
     @NotNull
     @Column(name = "fecha_hora")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaHora;
-    @Lob
-    @Column(name = "disenioAdjunto")
-    private byte[] disenioAdjunto;
     @JoinColumn(name = "id_disenio", referencedColumnName = "id_disenio")
     @ManyToOne(fetch = FetchType.LAZY)
     private Disenio idDisenio;
-    @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario")
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    private Usuario idUsuario;
     @JoinColumn(name = "id_estado_cita", referencedColumnName = "id_estado_cita")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private EstadoCita idEstadoCita;
@@ -117,13 +123,6 @@ public class Cita implements Serializable {
         this.fechaHora = fechaHora;
     }
 
-    public byte[] getDisenioAdjunto() {
-        return disenioAdjunto;
-    }
-
-    public void setDisenioAdjunto(byte[] disenioAdjunto) {
-        this.disenioAdjunto = disenioAdjunto;
-    }
 
     public Disenio getIdDisenio() {
         return idDisenio;
@@ -133,13 +132,6 @@ public class Cita implements Serializable {
         this.idDisenio = idDisenio;
     }
 
-    public Usuario getIdUsuario() {
-        return idUsuario;
-    }
-
-    public void setIdUsuario(Usuario idUsuario) {
-        this.idUsuario = idUsuario;
-    }
 
     public EstadoCita getIdEstadoCita() {
         return idEstadoCita;
@@ -172,6 +164,29 @@ public class Cita implements Serializable {
     @Override
     public String toString() {
         return "com.skatettoo.backend.persistence.entities.Cita[ idCita=" + idCita + " ]";
+    }
+    public Sucursal getIdSucursal() {
+        return idSucursal;
+    }
+
+    public void setIdSucursal(Sucursal idSucursal) {
+        this.idSucursal = idSucursal;
+    }
+
+    public byte[] getDisenioAdjunto() {
+        return disenioAdjunto;
+    }
+
+    public void setDisenioAdjunto(byte[] disenioAdjunto) {
+        this.disenioAdjunto = disenioAdjunto;
+    }
+
+    public Usuario getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(Usuario idUsuario) {
+        this.idUsuario = idUsuario;
     }
     
 }

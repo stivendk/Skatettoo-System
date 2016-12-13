@@ -41,6 +41,10 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Disenio.findByPrecioDisenio", query = "SELECT d FROM Disenio d WHERE d.precioDisenio = :precioDisenio")})
 public class Disenio implements Serializable, IEntitie {
 
+    @Lob
+    @Column(name = "disenioaAdjunto")
+    private byte[] disenioaAdjunto;
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -52,9 +56,6 @@ public class Disenio implements Serializable, IEntitie {
     @Size(min = 1, max = 50)
     @Column(name = "nombre_disenio")
     private String nombreDisenio;
-    @Lob
-    @Column(name = "disenioaAdjunto")
-    private byte[] disenioaAdjunto;
     @Basic(optional = false)
     @NotNull
     @Column(name = "sesiones_recomendadas")
@@ -109,13 +110,6 @@ public class Disenio implements Serializable, IEntitie {
         this.nombreDisenio = nombreDisenio;
     }
 
-    public byte[] getDisenioaAdjunto() {
-        return disenioaAdjunto;
-    }
-
-    public void setDisenioaAdjunto(byte[] disenioaAdjunto) {
-        this.disenioaAdjunto = disenioaAdjunto;
-    }
 
     public int getSesionesRecomendadas() {
         return sesionesRecomendadas;
@@ -194,6 +188,14 @@ public class Disenio implements Serializable, IEntitie {
     @Override
     public String getId() {
         return idDisenio.toString();
+    }
+
+    public byte[] getDisenioaAdjunto() {
+        return disenioaAdjunto;
+    }
+
+    public void setDisenioaAdjunto(byte[] disenioaAdjunto) {
+        this.disenioaAdjunto = disenioaAdjunto;
     }
     
 }

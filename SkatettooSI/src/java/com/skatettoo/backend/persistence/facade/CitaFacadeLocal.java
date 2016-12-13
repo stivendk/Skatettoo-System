@@ -30,4 +30,6 @@ public interface CitaFacadeLocal {
 
     int count();
     
+    List<Object[]> reporteCita();
+    
 }

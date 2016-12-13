@@ -56,7 +56,7 @@ public class NoticiaManagedBean implements Serializable {
 
     public String actualizarNoticia(Noticia no) {
         noti = no;
-        return "";
+        return "/pages/usuario/tatuador/noticia_1";
     }
 
     public List<Noticia> listarNoticia() {
